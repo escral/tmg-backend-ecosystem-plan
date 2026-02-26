@@ -10,12 +10,12 @@
 
 ## Topics
 
-- Linter / fixer strategy
-- .editorconfig
-- Standard README.md / .env.example 
-- Project scaffolding
-- Makefiles / Justfiles 
-- Branch naming conventions
-- Centralizing shared YAML configs
-- Nginx / SSL configuration via CLI (define a standard approach)
-- Version control
+- **Branch naming conventions** — agree on a shared Git branching standard across all projects
+- **.editorconfig** — enforce consistent formatting at the editor level, regardless of IDE
+- **Linter / fixer strategy** — shared lint rules and auto-fix pipelines per stack
+- **Standard README.md / .env.example** — define what every project must document from day one
+- **Version control** — versioning, tagging, and release practices
+- **Centralizing shared YAML configs** — reuse CI, lint, and other configs across repos
+- **Makefiles / Justfiles** — standardize common dev commands (install, build, test, deploy)
+- **Project scaffolding** — bootstrap new projects with all standards pre-applied via TMG CLI
+- **Nginx / SSL configuration via CLI** — automate server setup with a repeatable, defined approach

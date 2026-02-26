@@ -21,6 +21,9 @@
 - **Project scaffolding** — bootstrap new projects with all standards pre-applied via TMG CLI
 - **Nginx / SSL configuration via CLI** — automate server setup with a repeatable, defined approach
 - **Docs** — document all standards and processes in our docs for easy reference and onboarding
+- **Debugging** - define a clear process for debugging and troubleshooting issues in our projects without crutches
+- **Package development** - fix issues with package linking and development workflow
+- **Flexible docker-compose** - use variables in docker-compose to allow flexible configuration without needing to change .yaml files.
 
 ---
 
@@ -288,3 +291,80 @@ Justfile content:
 ### Proposed standard
 
 - Document all standards, processes, and best practices in a centralized location: https://docs.tmgbo.com/ (pages for backend already exists)
+
+---
+
+## Debugging and troubleshooting
+
+### Problem statement
+
+- Bugregator is not working, at least not working consistently, and we don't have a clear process for debugging and troubleshooting issues in our projects
+
+### Proposed standard
+
+> Should be researched
+
+### Goal
+
+- Clear process for debugging and troubleshooting issues in our projects without crutches
+
+---
+
+## Package development
+
+### Problem statement
+
+- Sometimes package development relies on application, and we don't have a way to link package to application 
+  without publishing it to repository.
+
+### Proposed solution
+
+- Use some `link` mechanism to link package to application
+- Research how Yii does it for some insights
+- Define clear instructions when package can be linked and when it should be developed in a fully separate playground.
+
+---
+
+## Flexible docker-compose
+
+### Problem statement
+
+- We have some hardcoded values in docker-compose files that require manual changes when copy-pasting it to a new 
+  project. 
+- There is no clear place for dynamic variables
+- There is no naming convention for containers
+
+### Proposed solution
+
+Use variables in docker-compose files to allow flexible configuration without needing to change .yaml files. For example:
+
+```yaml
+services:
+  postgres:
+    image: postgres:16
+    container_name: ${APP_NAME:-app}-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ${DB_NAME:-app}
+      POSTGRES_USER: ${DB_USER:-root}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-root}
+
+    ports:
+      - "${DB_PORT:-5432}:5432"
+
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-root} -d ${DB_NAME:-app}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pg_data:
+    name: ${APP_NAME}_pg_data
+```
+
+Justfile can ensure that `APP_NAME` is set int .env

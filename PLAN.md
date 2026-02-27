@@ -188,11 +188,51 @@
 
 ---
 
-## Suggested Priority Order
+## Priority Roadmap
 
-| Priority | Epics | Rationale |
-|----------|-------|-----------|
-| **Now** (quick wins) | 11, 2, 4, 5.1–5.3, 6.3, 6.4, 10.1–10.3 | XS/S effort, no dependencies, immediate improvement |
-| **Short-term** | 1, 3, 6.1–6.2, 8.1–8.4, 15 | Medium effort, high daily impact |
-| **Mid-term** | 9, 7, 12, 13, 14 | Requires prior standards to be finalized first |
-| **Long-term** | 5.4–5.5, 11, 8.5, 10.4 | Research-heavy or requires significant CLI work |
+---
+
+### Now — Epics 14, 11, 2, 4, 1, 6, 10
+
+Unblock the dev environment and establish foundational standards. Low effort, high immediate value.
+
+- **EPIC 14** — Documentation — migrate all decisions out of this repo into docs.tmgbo.com; backend onboarding guide *(this repo is temporary)*
+- **EPIC 11** — Nginx/SSL Setup *(blocking: local backend environment does not work)*
+- **EPIC 2** — Editor Standardization — create and distribute `.editorconfig`
+- **EPIC 4** — README Standardization — template + AI Skill
+- **EPIC 1** — Branch Naming & Git Conventions — policy document + docs page
+- **EPIC 6** — Package Release Management — `composer.lock` policy, semver docs, `composer validate --strict`
+- **EPIC 10** — Docker & Local Setup — flexible `docker-compose` standard, naming convention, scaffold template
+
+---
+
+### Short-term — Epics 3, 5, 6, 8, 15
+
+Core quality tooling and daily workflow improvements. Medium effort, high daily impact.
+
+- **EPIC 3** — PHP Code Quality — PHP-CS-Fixer shared config, Psalm strict setup, pre-commit hooks, pilot project
+- **EPIC 5** — ENV Management — `.env.example` standard, `.env.prod.example`, startup validation, CLI tool research
+- **EPIC 6** — Package Release Management — `tmg version-bump` CLI command, release process docs
+- **EPIC 8** — Task Runner — `Justfile` prototype, module library, `just` installation via CLI, `make` fallback alias
+- **EPIC 15** — Kafka Automatic Channel Creation — research, local setup, documentation
+
+---
+
+### Mid-term — Epics 9, 7, 12, 13
+
+Depends on standards from Now/Short-term being in place first.
+
+- **EPIC 9** — Project Scaffolding — backend template repo, `tmg scaffold backend` repo link, AI Skill
+- **EPIC 7** — Centralized YAML Configs — audit, extract RoadRunner config, evaluate CI/CD sharing
+- **EPIC 12** — Debugging & Monitoring — Bugregator audit, stack research, process documentation
+- **EPIC 13** — Package Development Workflow — local linking research, dev workflow documentation
+
+---
+
+### Long-term — Epics 5, 8, 10
+
+Research-heavy or requires significant CLI work. No blockers on other teams.
+
+- **EPIC 5** — ENV CLI Tool — implement `tmg env scaffold` / `tmg env validate` from schema
+- **EPIC 8** — Migrate all existing projects from Makefile/bin scripts to `Justfile`
+- **EPIC 10** — Migrate all existing docker-compose files to flexible variable approach + snippet library

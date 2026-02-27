@@ -111,6 +111,7 @@
 | 8.3 | Add `just` installation to `tmg` CLI setup command | XS | High |
 | 8.4 | Add standard `Justfile` to scaffold template | XS | High |
 | 8.5 | Migrate existing projects from Makefile/bin scripts to `Justfile` | L | Medium |
+| 8.6 | Add shell alias: `just` falls back to `make` when `Justfile` is missing but `Makefile` exists — smoother migration, distribute via `tmg` CLI setup | S | Medium |
 
 ---
 
@@ -119,7 +120,7 @@
 | Key | Issue | Effort | Impact |
 |-----|-------|--------|--------|
 | 9.1 | Create backend project template repository | L | High |
-| 9.2 | Implement `tmg scaffold backend` CLI command with variable substitution | XL | High |
+| 9.2 | Point `tmg scaffold backend` to the backend template repository (already implemented) | XS | High |
 | 9.3 | Write AI Skill for updating existing projects to match latest template | M | Medium |
 
 ---
@@ -132,6 +133,8 @@
 | 10.2 | Define container naming convention (e.g. `${APP_NAME}-postgres`) | XS | Medium |
 | 10.3 | Add standard flexible `docker-compose.yml` to scaffold template | XS | High |
 | 10.4 | Migrate existing project docker-compose files to the flexible variable approach | L | Medium |
+| 10.5 | Create docker-compose snippet library (postgres, redis, kafka, nginx, etc.) as a reference to copy from | M | High |
+| 10.6 | Write AI Skill for working with the docker-compose snippet library (find, copy, adapt snippets) | S | Medium |
 
 ---
 
@@ -141,8 +144,8 @@
 
 | Key | Issue | Effort | Impact |
 |-----|-------|--------|--------|
-| 11.1 | Document nginx/SSL setup: manual steps, ports vs domains decision, certificate setup | S | Medium |
-| 11.2 | Add nginx/SSL section to docs.tmgbo.com backend onboarding | XS | Medium |
+| 11.1 | Document nginx/SSL setup: manual steps, ports vs domains decision, certificate setup | S | High |
+| 11.2 | Add nginx/SSL section to docs.tmgbo.com backend onboarding | XS | High |
 
 ---
 
@@ -169,9 +172,8 @@
 
 | Key | Issue | Effort | Impact |
 |-----|-------|--------|--------|
-| 14.1 | Write backend standards index page linking to all individual standard pages | S | High |
-| 14.2 | Document all decisions from this meeting as individual standard pages | M | High |
-| 14.3 | Create onboarding guide for new backend developers | M | High |
+| 14.1 | Document all decisions from this meeting as individual standard pages | M | High |
+| 14.2 | Create onboarding guide for new backend developers | M | High |
 
 ---
 
@@ -190,7 +192,7 @@
 
 | Priority | Epics | Rationale |
 |----------|-------|-----------|
-| **Now** (quick wins) | 2, 4, 5.1–5.3, 6.3, 6.4, 10.1–10.3 | XS/S effort, no dependencies, immediate improvement |
+| **Now** (quick wins) | 11, 2, 4, 5.1–5.3, 6.3, 6.4, 10.1–10.3 | XS/S effort, no dependencies, immediate improvement |
 | **Short-term** | 1, 3, 6.1–6.2, 8.1–8.4, 15 | Medium effort, high daily impact |
 | **Mid-term** | 9, 7, 12, 13, 14 | Requires prior standards to be finalized first |
 | **Long-term** | 5.4–5.5, 11, 8.5, 10.4 | Research-heavy or requires significant CLI work |
